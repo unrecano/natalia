@@ -10,7 +10,7 @@ app.register_error_handler(400, bad_request)
 
 @app.route("/")
 def index():
-    return "Hola Reque"
+    return "Hello Natalia!"
 
 @app.route("/tokens", methods=["POST"])
 def tokenizer():
