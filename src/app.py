@@ -1,7 +1,9 @@
 from flask import Flask, request, jsonify, abort
 from services.nlp import get_sentences, get_tokens_and_frequencies
+import settings
 
 app = Flask(__name__)
+app.config.from_object(settings.DevelopmentConfig)
 
 @app.errorhandler(400)
 def bad_request(e):
@@ -34,4 +36,4 @@ def sentences():
     return jsonify(sentences)
 
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run()
