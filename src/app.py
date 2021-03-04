@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, abort
+from flask import Flask, json, request, jsonify, abort, render_template
 from services.nlp import get_sentences, get_tokens_and_frequencies
 import settings
 
@@ -12,7 +12,11 @@ app.register_error_handler(400, bad_request)
 
 @app.route("/")
 def index():
-    return "Hello Natalia!"
+    routes = {
+        "/tokens": f"/tokens",
+        "/sentences": f"/sentences"
+    }
+    return render_template("index.html", routes=routes)
 
 @app.route("/tokens", methods=["POST"])
 def tokenizer():
