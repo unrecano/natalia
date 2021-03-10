@@ -1,7 +1,13 @@
+import os
+import nltk
+from pathlib import Path
 from nltk.corpus import stopwords
 from nltk.probability import FreqDist
 from nltk.tokenize import regexp_tokenize, sent_tokenize
 from utils.stopwords import STOPSTRING
+
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+nltk.data.path.append(os.path.join(BASE_DIR, "nltk_data"))
 
 def _get_stopwords(language, more_words):
     return stopwords.words(language) \
